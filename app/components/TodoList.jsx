@@ -3,15 +3,26 @@ var Todo = require('Todo');
 
 var TodoList = React.createClass({
 
+	handleComplete: function(){
+
+	},
+
 	render: function() {
 
-		var {todos} = this.props;
+		var {todos, handleToggle, showCompleted} = this.props;
 
 		var renderTodos = () => {
 
+			if (showCompleted===false) {
+				todos = todos.filter((todo) => {
+
+					return todo.completed===false;
+				});
+			}
+
 			return todos.map((todo) => {
 				return (
-					<Todo key={todo.id} {...todo} /> // 1. Spread operator. 2. key is for react internal tracking
+					<Todo onToggle={handleToggle} key={todo.id} {...todo} /> // 1. Spread operator. 2. key is for react internal tracking
 				);
 			});
 		};
