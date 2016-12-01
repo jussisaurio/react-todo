@@ -11,6 +11,6 @@ $(document).foundation();
 
 ReactDOM.render(
 
-	<Main/>,
+	<Main/>,  
 	document.getElementById('app')
 );

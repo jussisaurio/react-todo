@@ -1,13 +1,27 @@
 var React = require('react');
 
 var TodoList = require('TodoList');
+var AddTodo = require('AddTodo');
 
 var Main = React.createClass({
+
+	handleAddTodo: function(text){
+		
+		var {noOfTodos, todos} = this.state;
+		noOfTodos++;
+		todos.push({id: noOfTodos, text: text});
+
+		this.setState({
+			noOfTodos: noOfTodos,
+			todos: todos
+		});
+	},
 
 	getInitialState: function(){
 
 		return {
-			todos: [{id: 1, text: 'masturbate'}, {id: 2, text: 'take a shit'}, {id: 3, text: 'wipe ass'}, {id: 4, text: 'suck dick'}]
+			noOfTodos: 0,
+			todos: [{}]
 		}
 	},
 
@@ -19,6 +33,7 @@ var Main = React.createClass({
 			<div>
 			<h1>Noni</h1>
 			<TodoList todos={todos}/>
+			<AddTodo storeFormData={this.handleAddTodo}/>
 			</div>
 		);
 	}

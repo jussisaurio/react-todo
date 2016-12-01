@@ -11,7 +11,7 @@ var TodoList = React.createClass({
 
 			return todos.map((todo) => {
 				return (
-					<Todo {...todo} key={todo.id}/> // 1. Spread operator. 2. key is for react internal tracking
+					<Todo key={todo.id} {...todo} /> // 1. Spread operator. 2. key is for react internal tracking
 				);
 			});
 		};
